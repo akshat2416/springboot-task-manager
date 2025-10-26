@@ -73,8 +73,7 @@ The application was designed with **scalability**, **decoupling**, and **ease of
 
 | Module | Method | Endpoint | Description |
 |--------|---------|-----------|-------------|
-| **Users** | POST | `/users/register` | Register a new user |
-|  | POST | `/users/login` | Authenticate user |
+| **Users** | POST | `/users/register` | Create a new user |
 |  | GET | `/users` | Get all users |
 | **Projects** | POST | `/projects` | Create a new project |
 |  | GET | `/projects` | List all projects |
@@ -83,7 +82,6 @@ The application was designed with **scalability**, **decoupling**, and **ease of
 | **Tasks** | POST | `/tasks` | Create a new task |
 |  | GET | `/tasks` | List all tasks |
 |  | PUT | `/tasks/{id}/status` | Update task status |
-| **Notifications** | POST | `/notifications/send` | Send notification (RabbitMQ) |
 | **Logs** | GET | `/logs` | Retrieve application logs |
 
 > 📬 For quick testing, import the included **`taskmanager.postman_collection.json`** file into Postman.
@@ -132,8 +130,6 @@ mvn spring-boot:run
 
 You can test all endpoints using:
 - ✅ **Postman Collection:** `taskmanager.postman_collection.json`
-- ✅ **Swagger UI (if enabled):**  
-  [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
 
 Example request (Create Task):
 ```json
@@ -146,18 +142,6 @@ POST /api/tasks
   "assigneeId": 1
 }
 ```
-
----
-
-## 🧩 Error Handling
-
-Custom exception handling ensures meaningful HTTP responses:
-- `404 Not Found` – Resource doesn’t exist  
-- `400 Bad Request` – Invalid input  
-- `500 Internal Server Error` – Unhandled exceptions  
-
----
-
 ## 📈 Future Improvements
 
 - Add JWT authentication & role-based access control  
