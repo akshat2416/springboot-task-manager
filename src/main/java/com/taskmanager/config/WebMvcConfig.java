@@ -1,4 +1,3 @@
-// src/main/java/com/yourdomain/taskmanager/config/WebMvcConfig.java
 package com.taskmanager.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +13,6 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        // Apply the interceptor to all API routes
         registry.addInterceptor(loggingInterceptor).addPathPatterns("/api/**");
     }
 }

@@ -1,4 +1,3 @@
-// src/main/java/com/yourdomain/taskmanager/config/RabbitMQConfig.java
 package com.taskmanager.config;
 
 import org.springframework.amqp.core.Binding;
@@ -18,7 +17,6 @@ public class RabbitMQConfig {
 
     @Bean
     Queue notificationQueue() {
-        // durable: false, exclusive: false, autoDelete: false
         return new Queue(NOTIFICATION_QUEUE_NAME, false);
     }
 

@@ -20,12 +20,10 @@ public class Project {
 
     private String description;
 
-    // A project has one owner. A user can own many projects.
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "owner_id", nullable = false)
     private User owner;
 
-    // A project has many members (users).
     @ManyToMany
     @JoinTable(
             name = "project_members",
@@ -34,7 +32,6 @@ public class Project {
     )
     private Set<User> members = new HashSet<>();
 
-    // A project can have many tasks.
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Task> tasks;
 }

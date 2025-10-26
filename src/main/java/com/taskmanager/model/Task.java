@@ -23,12 +23,10 @@ public class Task {
 
     private LocalDate dueDate;
 
-    // A task belongs to one project.
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "project_id", nullable = false)
     private Project project;
 
-    // A task is assigned to one user.
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "assignee_id")
     private User assignee;

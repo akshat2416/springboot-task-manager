@@ -29,18 +29,15 @@ public class LoggingInterceptor implements HandlerInterceptor {
         logRequest.setMethod(request.getMethod());
         logRequest.setStatusCode(response.getStatus());
         logRequest.setResponseTime(responseTime);
-        // In a real app, you would get the user ID from the security context
-        // logRequest.setUserId(SecurityContextHolder.getContext().getAuthentication().getName());
+
 
         try {
-            // Send log message to the RabbitMQ exchange
             rabbitTemplate.convertAndSend(
                     RabbitMQConfig.LOGGING_EXCHANGE_NAME,
                     RabbitMQConfig.LOGGING_ROUTING_KEY,
                     logRequest
             );
         } catch (Exception e) {
-            // Log locally that the logging service is down, but don't fail the main request
             System.err.println("Failed to send log message: " + e.getMessage());
         }
     }
